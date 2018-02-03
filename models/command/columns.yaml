@@ -1,0 +1,18 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+        width: 5%
+        invisible: true
+    dir:
+        label: dir
+        width: 5%
+    run_id:
+        label: Execution
+        width: 10%
+    line:
+        label: Line

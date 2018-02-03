@@ -1,0 +1,14 @@
+{
+    "name": "awebsome/remotessh",
+    "description": "Plugin for remote SSH for OctoberCMS.",
+    "homepage": "https://awebsome.me",
+    "authors": [
+        {
+            "name": "LucasZdv",
+            "email": "lucaszdv@gmail.com"
+        }
+    ],
+    "require": {
+        "laravelcollective/remote": "~5.0"
+    }
+}

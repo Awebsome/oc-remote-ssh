@@ -1,0 +1,58 @@
+fields:
+    ssh_enabled:
+        label: Enable SSH Connection
+        type: switch
+        default: false
+
+tabs:
+    fields:
+        ssh[host]:
+            label: "Host/IP"
+            commentAbove: "Your Server Host or IP"
+            type: text
+            default: "localhost"
+            required: true
+            tab: "SSH Connection"
+            span: left
+
+        ssh[username]:
+            label: "Username"
+            commentAbove: "SSH Username"
+            type: text
+            required: true
+            tab: "SSH Connection"
+            span: left
+
+        ssh[key]:
+            label: "Key"
+            commentAbove: "SSH with key"
+            type: text
+            tab: "SSH Connection"
+            span: right
+            placeholder: Optional
+
+        ssh[password]:
+            label: "Password"
+            commentAbove: "SSH Password"
+            type: password
+            required: true
+            tab: "SSH Connection"
+            span: left
+
+
+        ssh[keyphrase]:
+            label: "Keyphrase"
+            commentAbove: "SSH with keyphrase"
+            type: text
+            tab: "SSH Connection"
+            span: right
+            placeholder: Optional
+
+        ssh[commands]:
+            label: "Enable Commands"
+            commentAbove: "It indicates the authorized commands."
+            tab: SSH Connection
+            type: taglist
+            separator: comma
+            default: 'php artisan, cd, mv, wget, curl, zip, unzip, zcat, cat, mysqldump'
+            required: true
