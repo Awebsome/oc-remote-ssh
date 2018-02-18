@@ -29,7 +29,7 @@ class CommandLine extends Model
      */
     protected $rules = [
         'name'=> 'required|unique:awebsome_remotessh_commandlines',
-        'bind'=> 'required|alpha_dash|unique:awebsome_remotessh_commandlines',
+        'bind'=> 'required|unique:awebsome_remotessh_commandlines',
         'command'=> 'required',
     ];
 
@@ -45,4 +45,23 @@ class CommandLine extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    /**
+     * set Command Data
+     * ===================================================
+     * set command data in CommandLine
+     */
+    public function getCommandWith($data)
+    {
+        $command = $this->command;
+
+        if(count($data) >= 1)
+        {
+            foreach ($data as $key => $value) {
+                $command = str_replace('{'.$key.'}', $value, $command);
+            }
+        }
+
+        return $command;
+    }
 }

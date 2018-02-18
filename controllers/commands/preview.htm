@@ -8,7 +8,17 @@
 <?php if (!$this->fatalError): ?>
 
     <div class="form-preview">
-        <?= $this->formRenderPreview() ?>
+        <h2>Command Line:</h2>
+        <pre> <?=json_encode($formModel->line) ?> </pre>
+
+        <? if($formModel->dir == 'input'): ?>
+            <h3>Response ssh:</h3>
+            <code>
+                <? foreach ($formModel->responses as $response):?>
+                    <?= $response->line ?> <br>
+                <? endforeach ?>
+            </code>
+        <? endif ?>
     </div>
 
 <?php else: ?>

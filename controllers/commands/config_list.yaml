@@ -12,13 +12,13 @@ modelClass: Awebsome\Remotessh\Models\Command
 title: Manage Commands
 
 # Link URL for each record
-recordUrl: awebsome/remotessh/commands/update/:id
+recordUrl: awebsome/remotessh/commands/show/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records
 
 # Records to display per page
-recordsPerPage: 20
+recordsPerPage: 30
 
 # Display page numbers with pagination, disable to improve performance
 showPageNumbers: true
@@ -30,9 +30,9 @@ showSetup: true
 showSorting: true
 
 # Default sorting column
-# defaultSort:
-#     column: created_at
-#     direction: desc
+defaultSort:
+    column: created_at
+    direction: desc
 
 # Display checkboxes next to each record
 showCheckboxes: true
@@ -45,3 +45,5 @@ toolbar:
     # Search widget configuration
     search:
         prompt: backend::lang.list.search_prompt
+
+filter: config_filter.yaml

@@ -5,7 +5,6 @@
 columns:
     id:
         label: ID
-        searchable: true
         width: 5%
         invisible: true
     dir:
@@ -14,5 +13,10 @@ columns:
     run_id:
         label: Execution
         width: 10%
+        searchable: true
     line:
         label: Line
+        width: 70%
+    created_at:
+        label: runned at
+        width: 10%

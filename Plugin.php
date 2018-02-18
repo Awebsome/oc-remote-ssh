@@ -15,12 +15,12 @@ class Plugin extends PluginBase
         /**
          * Register "/config/remote.php" for SSH
         */
-        /*Config::set('remote.connections.remotessh.host',       CFG::get('ssh.host'));
+        Config::set('remote.connections.remotessh.host',       CFG::get('ssh.host'));
         Config::set('remote.connections.remotessh.username',   CFG::get('ssh.username'));
         Config::set('remote.connections.remotessh.password',   CFG::get('ssh.password'));
         Config::set('remote.connections.remotessh.key',        CFG::get('ssh.key'));
         Config::set('remote.connections.remotessh.keyphrase',  CFG::get('ssh.keyphrase'));
-        Config::set('remote.connections.remotessh.root',       'apps');*/
+        Config::set('remote.connections.remotessh.root',       'apps');
 
         // Register ServiceProviders
         App::register('Collective\Remote\RemoteServiceProvider');

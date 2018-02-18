@@ -11,9 +11,10 @@ class CreateTables extends Migration
         Schema::create('awebsome_remotessh_commands', function(Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('run_id');
-            $table->enum('dir', ['input', 'output'])->nullable();
+            $table->string('run_id')->nullable();
+
             $table->longText('line')->nullable();
+            $table->enum('dir', ['input', 'output'])->nullable();
             $table->timestamps();
         });
 
@@ -22,7 +23,7 @@ class CreateTables extends Migration
             $table->increments('id');
             $table->string('name')->index();
             $table->string('bind')->nullable();
-            $table->text('command');
+            $table->longText('command');
             $table->timestamps();
         });
     }

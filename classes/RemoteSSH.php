@@ -23,7 +23,7 @@ class RemoteSSH
         */
         Config::set('remote.connections.RemoteSSH.host',       (@$params['host']) ? $params['host'] : 'localhost');
         Config::set('remote.connections.RemoteSSH.username',   $params['username']);
-        Config::set('remote.connections.RemoteSSH.password',   $params['password']);        
+        Config::set('remote.connections.RemoteSSH.password',   $params['password']);
         Config::set('remote.connections.RemoteSSH.key',        CFG::get('ssh.key'));
         Config::set('remote.connections.RemoteSSH.keyphrase',  CFG::get('ssh.keyphrase'));
         Config::set('remote.connections.RemoteSSH.root',       'apps');
@@ -33,30 +33,42 @@ class RemoteSSH
         return $self;
     }
 
+    /**
+    *   set Data
+    * ===================================================
+    * @param array data for the command line.
+    * use to replace the data {varname}
+    */
     public function data($data)
     {
         $this->data = $data;
-
         return $this;
     }
 
 
+    /**
+     * run commands
+     */
     public function run($commands)
     {
-        $runId = str_random(6). ' '.time();
-
+        //set execution id (run_id)
+        $excId = str_random(6).time();
 
         $commands = $this->getCommands($commands);
 
-        Command::log($runId, $commands, 'input');
+        Command::run($commands, $excId);
 
-        SSH2::into('RemoteSSH')->run($commands, function($line) use ($runId)
+        SSH2::into('RemoteSSH')->run($commands, function($line) use ($excId)
         {
-            Command::log($runId,  $line, 'output');
+            Command::log($line, $excId);
         });
     }
 
-
+    /**
+     * get Commands
+     * =====================================
+     * get commands to run.
+     */
     public function getCommands($commands)
     {
         $cmds = [];
@@ -70,26 +82,17 @@ class RemoteSSH
         return $cmds;
     }
 
+    /**
+     * get Command Line
+     * ===================================================
+     * get command line by "bind command"
+     */
     public function getCommandLine($command)
     {
-        $commandLine = CommandLine::where('bind', $command)->first();
+        $cmdLine = CommandLine::where('bind', $command)->first();
 
-        if($commandLine)
-            return $this->setCommandData($commandLine->command);
+        if($cmdLine)
+            return $cmdLine->getCommandWith($this->data);
         else return $command;
-    }
-
-    public function setCommandData($command)
-    {
-        $data = $this->data;
-
-        if(count($data) >= 1)
-        {
-            foreach ($data as $key => $value) {
-                $command = str_replace('{'.$key.'}', $value, $command);
-            }
-        }
-
-        return $command;
     }
 }

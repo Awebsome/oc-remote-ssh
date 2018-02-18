@@ -1,0 +1,12 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+    dir:
+        label: Type
+        type: group
+        conditions: dir in (:filtered)
+        options:
+            input: Input
+            output: Output

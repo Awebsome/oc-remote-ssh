@@ -1,14 +1,11 @@
 <?php namespace Awebsome\Remotessh\Controllers;
 
-
-use SSH2;
-use Log;
-use Event;
-
+use Backend;
+use Redirect;
 use BackendMenu;
 use Backend\Classes\Controller;
 
-use Awebsome\RemoteSsh\Models\Command;
+use Awebsome\Remotessh\Models\Command;
 
 /**
  * Commands Back-end Controller
@@ -30,24 +27,17 @@ class Commands extends Controller
         BackendMenu::setContext('Awebsome.RemoteSsh', 'remotessh', 'commands');
     }
 
-    public function test()
+    public function show($recordId)
     {
-        $runId = str_random(6). ' '.time();
+        $command = Command::find($recordId);
 
-        $commands = [
-            'cd apps/development',
-            'php artisan october:up',
-            'php artisan cache:clear',
-        ];
-
-
-        Command::log($runId, $commands, 'input');
-
-        SSH2::into('remotessh')->run($commands, function($line) use ($runId)
+        if($command)
         {
-            Command::log($runId,  $line, 'output');
-        });
+            if($command->dir == 'output')
+                $command = Command::where('dir', 'input')->where('run_id', $command->run_id)->first();
 
-        return $this->ssh_response;
+            return Redirect::to(Backend::url('awebsome/remotessh/commands/preview/'.$command->id));
+
+        } else return Redirect::to(Backend::url('awebsome/remotessh/commands'));
     }
 }
