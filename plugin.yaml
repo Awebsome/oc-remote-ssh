@@ -1,0 +1,28 @@
+plugin:
+    name: 'awebsome.remotessh::lang.plugin.name'
+    description: 'Remote SSH'
+    author: Awebsome
+    icon: oc-icon-linux
+    homepage: 'https://awebsome.me'
+navigation:
+
+    remotessh:
+        label: 'awebsome.remotessh::lang.plugin.name'
+        url: awebsome/remotessh/commandlines
+        icon: icon-linux
+        permissions:
+            - awebsome.remotessh.manage
+        order: '550'
+        sideMenu:
+            commandlines:
+                label: 'Command Lines'
+                url: awebsome/remotessh/commandlines
+                icon: icon-terminal
+                permissions:
+                    - awebsome.remotessh.command_lines
+            commands:
+                label: 'Runned commands'
+                url: awebsome/remotessh/commands
+                icon: icon-cog
+                permissions:
+                    - awebsome.remotessh.commands

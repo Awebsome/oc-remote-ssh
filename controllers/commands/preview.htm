@@ -1,0 +1,29 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?= Backend::url('awebsome/remotessh/commands') ?>">Commands</a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php if (!$this->fatalError): ?>
+
+    <div class="form-preview">
+        <h2>Command Line:</h2>
+        <pre> <?=json_encode($formModel->line) ?> </pre>
+
+        <? if($formModel->dir == 'input'): ?>
+            <h3>Response ssh:</h3>
+            <code>
+                <? foreach ($formModel->responses as $response):?>
+                    <?= $response->line ?> <br>
+                <? endforeach ?>
+            </code>
+        <? endif ?>
+    </div>
+
+<?php else: ?>
+
+    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p><a href="<?= Backend::url('awebsome/remotessh/commands') ?>" class="btn btn-default">Return to commands list</a></p>
+
+<?php endif ?>

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Command Line
+
+# Model Form Field configuration
+form: $/awebsome/remotessh/models/commandline/fields.yaml
+
+# Model Class name
+modelClass: Awebsome\RemoteSsh\Models\CommandLine
+
+# Default redirect location
+defaultRedirect: awebsome/remotessh/commandlines
+
+# Create page
+create:
+    title: Create Command Line
+    redirect: awebsome/remotessh/commandlines/update/:id
+    redirectClose: awebsome/remotessh/commandlines
+
+# Update page
+update:
+    title: Edit Command Line
+    redirect: awebsome/remotessh/commandlines
+    redirectClose: awebsome/remotessh/commandlines
+
+# Preview page
+preview:
+    title: Preview Command Line

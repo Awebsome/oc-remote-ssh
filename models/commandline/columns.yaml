@@ -1,0 +1,14 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    name:
+        label: Name
+        searchable: true
+    bind:
+        label: Bind
+        searchable: true
+    command:
+        label: Command Line
+        searchable: true
