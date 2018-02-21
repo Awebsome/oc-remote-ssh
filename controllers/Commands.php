@@ -5,6 +5,7 @@ use Redirect;
 use BackendMenu;
 use Backend\Classes\Controller;
 
+use Db;
 use Awebsome\Remotessh\Models\Command;
 
 /**
@@ -39,5 +40,12 @@ class Commands extends Controller
             return Redirect::to(Backend::url('awebsome/remotessh/commands/preview/'.$command->id));
 
         } else return Redirect::to(Backend::url('awebsome/remotessh/commands'));
+    }
+
+    public function onDeleteAll()
+    {
+        Db::table('awebsome_remotessh_commands')->truncate();
+
+        return $this->listRefresh('apps');
     }
 }

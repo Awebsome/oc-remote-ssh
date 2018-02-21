@@ -24,6 +24,8 @@ class CreateTables extends Migration
             $table->string('name')->index();
             $table->string('bind')->nullable();
             $table->longText('command');
+
+            $table->boolean('deletable')->default(1);
             $table->timestamps();
         });
     }

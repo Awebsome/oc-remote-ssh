@@ -12,3 +12,6 @@ columns:
     command:
         label: Command Line
         searchable: true
+    deletable:
+        label: Deletable
+        type: switch
