@@ -24,8 +24,8 @@ class RemoteSSH
         Config::set('remote.connections.RemoteSSH.host',       (@$params['host']) ? $params['host'] : 'localhost');
         Config::set('remote.connections.RemoteSSH.username',   $params['username']);
         Config::set('remote.connections.RemoteSSH.password',   $params['password']);
-        Config::set('remote.connections.RemoteSSH.key',        CFG::get('ssh.key'));
-        Config::set('remote.connections.RemoteSSH.keyphrase',  CFG::get('ssh.keyphrase'));
+        Config::set('remote.connections.RemoteSSH.key',        @$params['key']);
+        Config::set('remote.connections.RemoteSSH.keyphrase',  @$params['keyphrase']);
         Config::set('remote.connections.RemoteSSH.root',       'apps');
 
         $self->connection = $params;
