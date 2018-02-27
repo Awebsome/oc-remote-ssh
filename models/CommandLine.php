@@ -1,6 +1,7 @@
 <?php namespace Awebsome\RemoteSsh\Models;
 
 use Model;
+use ValidationException;
 
 /**
  * CommandLine Model
@@ -45,6 +46,19 @@ class CommandLine extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    public function beforeDelete()
+    {
+        try{
+
+            if(!$this->deletable)
+                throw new ValidationException(['error_mesage' => 'This command can not be deleted, it is probably used by another plugin']);
+
+        }catch(\ValidationException $e)
+        {
+            throw new ValidationException(['error_mesage' => $e->getMessage()]);
+        }
+    }
 
     /**
      * set Command Data
