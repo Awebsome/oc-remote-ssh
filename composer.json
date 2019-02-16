@@ -1,9 +1,9 @@
 {
-    "name": "awebsome/remote-ssh",
+    "name": "awebsome/ssh",
     "type": "october-plugin",
     "description": "Remote SSH driver",
     "homepage": "https://awebsome.me",
-    "keywords": ["october", "server", "ssh", "drivers", "plugin"],
+    "keywords": ["ssh", "drivers"],
     "license": "MIT",
     "authors": [
         {
@@ -12,12 +12,12 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
-        "laravelcollective/remote": "~5.0"
+        "php": ">=7.0",
+        "laravelcollective/remote": "5.4.*"
     },
     "autoload": {
         "psr-4": {
-            "Awebsome\\Remotessh\\": ""
+            "Awebsome\\ssh\\": ""
         }
     }
 }
